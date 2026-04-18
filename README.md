@@ -62,4 +62,4 @@ We have provided a one-click initialization script for Windows users:
 ---
 
 ## ⚖️ License
-Privately commissioned for the pursuit of excellence. Created by **Antigravity**.
+Privately commissioned for the pursuit of excellence.
