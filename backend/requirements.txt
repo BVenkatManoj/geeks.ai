@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+google-genai
+python-dotenv
+youtube-transcript-api
+passlib[bcrypt]
+pyjwt
+twilio
