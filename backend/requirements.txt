@@ -4,6 +4,5 @@ sqlalchemy
 google-genai
 python-dotenv
 youtube-transcript-api
-passlib[bcrypt]
-pyjwt
-twilio
+psycopg2-binary
+gunicorn

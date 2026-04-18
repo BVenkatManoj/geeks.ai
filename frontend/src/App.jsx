@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import mentorImg from './assets/mentor.png';
 
+// Production Configuration
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 // Roman Numeral converter for true Gatsby elegance
 function toRoman(num) {
   const lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
@@ -39,7 +42,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch('http://localhost:8000/api/history');
+      const res = await fetch(`${API_BASE_URL}/api/history`);
       if (res.ok) {
         const data = await res.json();
         setSessions(data);
@@ -49,7 +52,7 @@ function App() {
 
   const fetchSession = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/history/${id}`);
+      const res = await fetch(`${API_BASE_URL}/api/history/${id}`);
       if (res.ok) {
         const data = await res.json();
         setMessages(data);
@@ -59,7 +62,7 @@ function App() {
 
   const deleteSession = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/history/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE_URL}/api/history/${id}`, { method: 'DELETE' });
       if (res.ok) {
         if (currentSessionId === id) startNewChat();
         fetchHistory();
@@ -77,7 +80,7 @@ function App() {
     setInputText('');
 
     try {
-      const res = await fetch('http://localhost:8000/api/chat', {
+      const res = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
